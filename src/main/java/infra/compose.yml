@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  XPRODB:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: aegisep1234@
+      POSTGRES_DB: talk
+      TZ: "Asia/Seoul"
+    restart: always
+    container_name: springBatch
