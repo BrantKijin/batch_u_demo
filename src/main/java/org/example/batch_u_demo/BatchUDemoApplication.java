@@ -17,33 +17,8 @@ import lombok.RequiredArgsConstructor;
 
 @EnableBatchProcessing
 @SpringBootApplication
-@RequiredArgsConstructor
 public class BatchUDemoApplication {
 
-	public final JobBuilderFactory jobBuilderFactory;
-	public final StepBuilderFactory stepBuilderFactory;
-
-	@Bean
-	public Step firstStep(){
-		return this.stepBuilderFactory.get("step1")
-			.tasklet(new Tasklet() {
-				@Override
-				public RepeatStatus execute(StepContribution stepContribution, ChunkContext chunkContext) throws
-					Exception {
-					System.out.println("step1 executed!!");
-					return RepeatStatus.FINISHED;
-				}
-			})
-			.build();
-
-	}
-
-	@Bean
-	public Job firstJob(){
-		return this.jobBuilderFactory.get("job1")
-			.start(firstStep())
-			.build();
-	}
 	public static void main(String[] args) {
 		SpringApplication.run(BatchUDemoApplication.class, args);
 	}
